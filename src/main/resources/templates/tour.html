@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<meta name="description" content="XRebel challenge application"></meta>
+<meta name="author" content="Oleg Shelajev (@shelajev)"></meta>
+<!--<link rel="icon" href="../../favicon.ico">-->
+
+<title>XRebel challenge application</title>
+
+<!-- Bootstrap core -->
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/js/tether.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+<link href="/webjars/bootstrap-tour/css/bootstrap-tour.min.css" rel="stylesheet"></link>
+<script src="/webjars/bootstrap-tour/js/bootstrap-tour.min.js"></script>
+
+
+<!-- Custom styles for this template -->
+
+<body data-gr-c-s-loaded="true">
+<div th:replace="fragments/header :: header"></div>
+<link href="/css/main.css" rel="stylesheet"></link>
+<link href="/js/main.js" rel="stylesheet"></link>
+
+<div class="container">
+    <div class="starter-template">
+        <div class="jumbotron" id="image1">
+            <img src="/images/xrebel.png" width="640" align="center"></img>
+        </div>
+        <div class="jumbotron" id="image2">
+            <img src="/images/ide.png" width="640" align="center"></img>
+        </div>
+        <p class="lead">
+        <a id="start-tour-button" class="btn btn-lg btn-success" href="/" role="button">Start the challenge!</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    var tour = new Tour({
+        steps: [
+            {
+                element: "#image1",
+                title: "Look at the application with XRebel",
+                content: "XRebel helps you identify the excessive database use",
+                placement: "auto right"
+            },
+            {
+                element: "#image2",
+                title: "Get to the IDE",
+                content: "Get to the IDE, fix the issue, let JRebel reload the code instantly",
+                placement: "auto right"
+
+            },
+            {
+                element: "#start-tour-button",
+                title: "Start the challenge now",
+                content: "Start the challenge, identify a performance issue, reduce the number of database queries, and win an awesome prize",
+                placement: "auto left"
+
+            }
+        ]
+    });
+
+    // Initialize the tour
+    tour.init();
+    tour.goTo();
+
+    // Start the tour
+    tour.start(true);
+</script>
+</body>
+</html>

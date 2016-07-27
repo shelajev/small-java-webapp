@@ -1,0 +1,5 @@
+:root .carbonad,
+:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle,
+:root #carbonads-container
+{display:none !important;}

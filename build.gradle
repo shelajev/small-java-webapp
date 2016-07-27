@@ -31,17 +31,31 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	runtime('org.postgresql:postgresql')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-}
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    // webjars locator so we can omit the version and link to the files like
+    // <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
+    compile('org.webjars:webjars-locator')
+    compile('org.webjars:bootstrap:3.3.7') { // 4.0.0-alpha.2
+        exclude(group: 'org.webjars', module: 'jquery')
+    }
+    compile('org.webjars:jquery:2.2.4')
+    compile('org.webjars:bootstrap-tour:0.10.2-1')
+
+    compile('org.webjars.bower:tether:1.1.1')
+
+    // zt-exec to run "git reset --HARD"
+    compile('org.zeroturnaround:zt-exec:1.9')
+
+    runtime('org.postgresql:postgresql')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 
 
-eclipse {
-	classpath {
-		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-	}
+    eclipse {
+        classpath {
+            containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+            containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+        }
+    }
 }
