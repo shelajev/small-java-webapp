@@ -26,14 +26,26 @@
 <link href="/js/main.js" rel="stylesheet"></link>
 <div class="container">
     <div class="starter-template">
-        <div class="jumbotron">
-            IMAGE 1
+        <div class="row">
+            <p class="lead">Gotta catch them all! See how many pokemons there are, how many database queries did it take to generate this table?</p>
         </div>
-        <div class="jumbotron">
-            IMAGE 2
+        <div class="row">
+            <tr th:each="pokemon : ${pokemons}">
+                <div class="col-md-3">
+                    <td th:text="${pokemon.name}">John Connor</td>
+                </div>
+                <div class="col-md-3">
+                    <td th:text="${pokemon.species.name}">Charmander</td>
+                </div>
+                <div class="col-md-3">
+                    <td th:text="${pokemon.CP}">122</td>
+                </div>
+                <div class="col-md-3">
+                    <td th:text="${pokemon.HP}">200</td>
+                </div>
+            </tr>
         </div>
 
-        <a class="btn btn-lg btn-success" href="/challenge" role="button">Start the challenge!</a>
     </div>
 </div>
 </body>

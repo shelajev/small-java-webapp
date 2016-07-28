@@ -30,15 +30,33 @@
 
 <div class="container">
     <div class="starter-template">
-        <div class="jumbotron" id="image1">
-            <img src="/images/xrebel.png" width="640" align="center"></img>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+
+            <div class="col-md-6" id="image1">
+                <a href="#" class="thumbnail">
+                    <img src="/images/xrebel.png" width="640" align="center"></img>
+                </a>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-        <div class="jumbotron" id="image2">
-            <img src="/images/ide.png" width="640" align="center"></img>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" id="image2">
+                <a href="#" class="thumbnail">
+                    <img src="/images/ide.png" width="640" align="center"></img>
+                </a>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-        <p class="lead">
-        <a id="start-tour-button" class="btn btn-lg btn-success" href="/" role="button">Start the challenge!</a>
-        </p>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <a id="start-tour-button" class="btn btn-lg btn-success" href="/" role="button">Start the challenge!</a>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
     </div>
 </div>
 
@@ -49,20 +67,20 @@
                 element: "#image1",
                 title: "Look at the application with XRebel",
                 content: "XRebel helps you identify the excessive database use",
-                placement: "auto right"
+                placement: "right"
             },
             {
                 element: "#image2",
                 title: "Get to the IDE",
                 content: "Get to the IDE, fix the issue, let JRebel reload the code instantly",
-                placement: "auto right"
+                placement: "right"
 
             },
             {
                 element: "#start-tour-button",
                 title: "Start the challenge now",
                 content: "Start the challenge, identify a performance issue, reduce the number of database queries, and win an awesome prize",
-                placement: "auto left"
+                placement: "top"
 
             }
         ]
