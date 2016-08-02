@@ -19,6 +19,9 @@ public class Pokemon {
   public Long CP;
   public Long HP;
 
+  @ManyToOne
+  public Trainer trainer;
+
   public Pokemon() {}
 
 

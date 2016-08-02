@@ -17,7 +17,7 @@ public class Trainer {
 
   public Long level;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
   public Set<Pokemon> pokemons = new HashSet<>();
 
 
@@ -30,6 +30,7 @@ public class Trainer {
 
   public Trainer addPokemon(Pokemon pokemon) {
     this.pokemons.add(pokemon);
+    pokemon.trainer = this;
     return this;
   }
 }

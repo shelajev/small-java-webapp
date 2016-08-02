@@ -12,6 +12,7 @@ import org.zeroturnaround.model.Trainer;
 import org.zeroturnaround.model.repositories.PokemonRepository;
 import org.zeroturnaround.model.repositories.PokemonSpeciesRepository;
 import org.zeroturnaround.model.repositories.TrainerRepository;
+import org.zeroturnaround.util.Names;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,17 +38,17 @@ public class SmallJavaWebappApplication {
   }
 
   private void createTrainers(PokemonRepository pokemons, TrainerRepository trainers, List<Pokemon> monsters) {
-    if(pokemons.count() > 0) return;
+    if(trainers.count() > 0) return;
+
     int n = 100;
     for(int i = 0; i < n; i++) {
       long level = ThreadLocalRandom.current().nextLong(1, 30);
       int c = ThreadLocalRandom.current().nextInt(1, 20);
-      Trainer t = new Trainer("Simon", level);
+      Trainer t = new Trainer(Names.randomName(), level);
       for(int j = 0; j < c; j++) {
         if(monsters.isEmpty()) {
           Pokemon p = monsters.remove(0);
           t.addPokemon(p);
-          pokemons.save(p);
         }
       }
       trainers.save(t);
@@ -66,7 +67,7 @@ public class SmallJavaWebappApplication {
       PokemonSpecies kind = species.findByNumber(number);
       long hp = ThreadLocalRandom.current().nextLong(10, 400);
       long cp = ThreadLocalRandom.current().nextLong(10, 400);;
-      Pokemon p = new Pokemon(kind, "Pika Chu " + i, cp, hp);
+      Pokemon p = new Pokemon(kind, Names.randomFirstName(), cp, hp);
       pokemons.save(p);
       result.add(p);
     }

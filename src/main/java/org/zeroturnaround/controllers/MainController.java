@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zeroturnaround.SmallJavaWebappApplication;
-import org.zeroturnaround.model.repositories.PokemonRepository;
+import org.zeroturnaround.model.repositories.TrainerRepository;
 import org.zeroturnaround.util.Git;
 
 /**
@@ -19,7 +19,7 @@ public class MainController {
 
   private static final Logger log = LoggerFactory.getLogger(SmallJavaWebappApplication.class);
 
-  @Autowired PokemonRepository pokemons;
+  @Autowired TrainerRepository trainers;
 
   @RequestMapping("/")
   public String index() {
@@ -28,15 +28,9 @@ public class MainController {
 
   @RequestMapping("/challenge")
   public String challenge(Model model) {
-    model.addAttribute("pokemons", pokemons.findAll());
+    model.addAttribute("trainers", trainers.findAll());
     return "challenge";
   }
-
-  @RequestMapping("/success")
-  public String success() {
-    return "emails/form";
-  }
-
 
   @RequestMapping("/revert")
   public String revert() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <meta charset="utf-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
@@ -29,23 +29,24 @@
         <div class="row">
             <p class="lead">Gotta catch them all! See how many pokemons there are, how many database queries did it take to generate this table?</p>
         </div>
-        <div class="row">
-            <tr th:each="pokemon : ${pokemons}">
-                <div class="col-md-3">
-                    <td th:text="${pokemon.name}">John Connor</td>
-                </div>
-                <div class="col-md-3">
-                    <td th:text="${pokemon.species.name}">Charmander</td>
-                </div>
-                <div class="col-md-3">
-                    <td th:text="${pokemon.CP}">122</td>
-                </div>
-                <div class="col-md-3">
-                    <td th:text="${pokemon.HP}">200</td>
-                </div>
-            </tr>
+        <div class="table">
+            <table class="table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Pokemons</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="trainer : ${trainers}">
+                        <td th:text="${trainer.name}"></td>
+                        <td th:text="${trainer.level}"></td>
+                        <td th:text="${trainer.pokemons.size()}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
     </div>
 </div>
 </body>

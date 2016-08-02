@@ -4,10 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.zeroturnaround.SmallJavaWebappApplication;
+import org.zeroturnaround.controllers.api.model.Email;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +20,7 @@ import java.util.Collections;
 /**
  * Created by shelajev on 22/07/16.
  */
-@Controller(value = "/emails")
+@Controller()
 public class Emails {
 
   private static final Logger log = LoggerFactory.getLogger(SmallJavaWebappApplication.class);
@@ -29,13 +31,20 @@ public class Emails {
   @Value("${smalljavawebapp.results.dir}")
   private String resultsDir;
 
-  @RequestMapping(value = "/emails/save", method = RequestMethod.GET)
-  public String save(@RequestParam(value="name", defaultValue="") String name, @RequestParam(value="email", defaultValue="") String email) {
+  @RequestMapping(value="/success", method=RequestMethod.GET)
+  public String greetingForm(Model model) {
+    model.addAttribute("email", new Email());
+    return "emails/form";
+  }
+
+  @RequestMapping(value = "emails/save", method = RequestMethod.POST)
+  public String save(@ModelAttribute Email email, Model model) {
+
     try {
-      Files.write(Paths.get(getResultFile()), Collections.singletonList(name + "," + email), StandardOpenOption.APPEND);
+      Files.write(Paths.get(getResultFile()), Collections.singletonList(email.name + "," + email.email), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
     catch (IOException e) {
-      log.error("Cannot store the result: " + name + "," + email , e);
+      log.error("Cannot store the result: " + email.name + "," + email.email , e);
     }
     return "redirect:/";
   }
