@@ -1,7 +1,7 @@
-package org.zeroturnaround.model.repositories;
+package org.sampleapp.model.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import org.zeroturnaround.model.Trainer;
+import org.sampleapp.model.Trainer;
 
 import java.util.List;
 

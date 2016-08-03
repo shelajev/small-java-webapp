@@ -1,4 +1,4 @@
-package org.zeroturnaround.util;
+package org.sampleapp.util;
 
 import java.util.concurrent.ThreadLocalRandom;
 

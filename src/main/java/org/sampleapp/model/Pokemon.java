@@ -1,4 +1,4 @@
-package org.zeroturnaround.model;
+package org.sampleapp.model;
 
 import javax.persistence.*;
 
@@ -32,5 +32,11 @@ public class Pokemon {
     this.HP = HP;
   }
 
+  public void setTrainer(Trainer trainer) {
+    this.trainer = trainer;
+  }
 
+  public Trainer getTrainer() {
+    return trainer;
+  }
 }

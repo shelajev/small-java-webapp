@@ -29,23 +29,29 @@
         <div class="row">
             <p class="lead">Gotta catch them all! See how many pokemons there are, how many database queries did it take to generate this table?</p>
         </div>
-        <div class="table">
-            <table class="table-hover">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Level</th>
-                    <th>Pokemons</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="trainer : ${trainers}">
-                        <td th:text="${trainer.name}"></td>
-                        <td th:text="${trainer.level}"></td>
-                        <td th:text="${trainer.pokemons.size()}"></td>
+        <div class="row" th:each="trainer : ${trainers}">
+            <div class="col-md-2" th:text="${trainer.name}"></div>
+            <div class="col-md-1" th:text="${trainer.level}"></div>
+            <div class="col-md-9">
+                <table class="table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Kind</th>
+                        <th>CP</th>
+                        <th>HP</th>
                     </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pokemon : ${trainer.pokemons}">
+                        <td th:text="${pokemon.name}"></td>
+                        <td th:text="${pokemon.species.name}"></td>
+                        <td th:text="${pokemon.CP}"></td>
+                        <td th:text="${pokemon.HP}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
-package org.zeroturnaround.model.repositories;
+package org.sampleapp.model.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import org.zeroturnaround.model.Pokemon;
+import org.sampleapp.model.Pokemon;
 
 /**
  * Created by shelajev on 22/07/16.

@@ -1,5 +1,6 @@
-package org.zeroturnaround.controllers.api;
+package org.sampleapp.controllers.api;
 
+import org.sampleapp.controllers.api.model.Email;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.zeroturnaround.SmallJavaWebappApplication;
-import org.zeroturnaround.controllers.api.model.Email;
+import org.sampleapp.SmallJavaWebappApplication;
 
 import java.io.IOException;
 import java.nio.file.Files;

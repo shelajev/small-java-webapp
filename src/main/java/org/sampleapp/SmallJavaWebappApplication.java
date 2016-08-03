@@ -1,22 +1,19 @@
-package org.zeroturnaround;
+package org.sampleapp;
 
+import org.sampleapp.model.PokemonSpecies;
+import org.sampleapp.model.Trainer;
+import org.sampleapp.model.repositories.PokemonRepository;
+import org.sampleapp.model.repositories.PokemonSpeciesRepository;
+import org.sampleapp.model.repositories.TrainerRepository;
+import org.sampleapp.util.Names;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.zeroturnaround.model.Pokemon;
-import org.zeroturnaround.model.PokemonSpecies;
-import org.zeroturnaround.model.Trainer;
-import org.zeroturnaround.model.repositories.PokemonRepository;
-import org.zeroturnaround.model.repositories.PokemonSpeciesRepository;
-import org.zeroturnaround.model.repositories.TrainerRepository;
-import org.zeroturnaround.util.Names;
+import org.sampleapp.model.Pokemon;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
@@ -32,50 +29,35 @@ public class SmallJavaWebappApplication {
   public CommandLineRunner demo(PokemonSpeciesRepository species, PokemonRepository pokemons, TrainerRepository trainers) {
     return (args) -> {
       createPokemonSpecies(species);
-      List<Pokemon> monsters =  createPokemons(species, pokemons);
-      createTrainers(pokemons, trainers, monsters);
+      createTrainers(species, pokemons, trainers);
     };
   }
 
-  private void createTrainers(PokemonRepository pokemons, TrainerRepository trainers, List<Pokemon> monsters) {
-    if(trainers.count() > 0) return;
+  private void createTrainers(PokemonSpeciesRepository species, PokemonRepository pokemons, TrainerRepository trainers) {
+    if (trainers.count() > 0) {
+      return;
+    }
 
     int n = 100;
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
       long level = ThreadLocalRandom.current().nextLong(1, 30);
       int c = ThreadLocalRandom.current().nextInt(1, 20);
       Trainer t = new Trainer(Names.randomName(), level);
-      for(int j = 0; j < c; j++) {
-        if(monsters.isEmpty()) {
-          Pokemon p = monsters.remove(0);
-          t.addPokemon(p);
-        }
+      for (int j = 0; j < c; j++) {
+        long number = ThreadLocalRandom.current().nextLong(1, 100);
+        PokemonSpecies kind = species.findByNumber(number);
+        long hp = ThreadLocalRandom.current().nextLong(10, 400);
+        long cp = ThreadLocalRandom.current().nextLong(10, 400);
+        Pokemon p = new Pokemon(kind, Names.randomFirstName(), cp, hp);
+        t.addPokemon(p);
       }
       trainers.save(t);
     }
-  }
 
-  private List<Pokemon> createPokemons(PokemonSpeciesRepository species, PokemonRepository pokemons) {
-    if(pokemons.count() > 0) {
-      return Collections.emptyList();
-    }
-    int n = 1000;
-
-    List<Pokemon> result = new ArrayList<>();
-    for(int i = 0; i < n; i++) {
-      long number = ThreadLocalRandom.current().nextLong(1, 100);
-      PokemonSpecies kind = species.findByNumber(number);
-      long hp = ThreadLocalRandom.current().nextLong(10, 400);
-      long cp = ThreadLocalRandom.current().nextLong(10, 400);;
-      Pokemon p = new Pokemon(kind, Names.randomFirstName(), cp, hp);
-      pokemons.save(p);
-      result.add(p);
-    }
-    return result;
   }
 
   private void createPokemonSpecies(PokemonSpeciesRepository repository) {
-    if(repository.count() > 0) {
+    if (repository.count() > 0) {
       return;
     }
     repository.save(new PokemonSpecies(1, "Bulbasaur"));

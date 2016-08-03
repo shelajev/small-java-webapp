@@ -1,4 +1,4 @@
-package org.zeroturnaround.controllers.api.model;
+package org.sampleapp.controllers.api.model;
 
 /**
  * Created by shelajev on 02/08/16.

@@ -1,8 +1,8 @@
-package org.zeroturnaround.util;
+package org.sampleapp.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.zeroturnaround.SmallJavaWebappApplication;
+import org.sampleapp.SmallJavaWebappApplication;
 import org.zeroturnaround.exec.ProcessExecutor;
 import org.zeroturnaround.exec.stream.slf4j.Slf4jStream;
 
@@ -16,8 +16,8 @@ public class Git {
   public void revert() {
     try {
       // only uncomment when you commit all the local changes. Otherwise you might lose them
-//      new ProcessExecutor().command("git", "reset", "--hard")
-      new ProcessExecutor().command("pwd")
+      new ProcessExecutor().command("git", "reset", "--hard")
+//      new ProcessExecutor().command("pwd")
         .redirectOutput(Slf4jStream.of(log).asInfo())
         .execute();
     }

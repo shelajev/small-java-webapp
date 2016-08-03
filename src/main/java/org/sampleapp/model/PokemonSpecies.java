@@ -1,4 +1,4 @@
-package org.zeroturnaround.model;
+package org.sampleapp.model;
 
 import javax.persistence.*;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package org.zeroturnaround.model;
+package org.sampleapp.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ public class Trainer {
 
   public Long level;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "trainer", fetch = FetchType.EAGER)
   public Set<Pokemon> pokemons = new HashSet<>();
 
 
@@ -30,7 +30,7 @@ public class Trainer {
 
   public Trainer addPokemon(Pokemon pokemon) {
     this.pokemons.add(pokemon);
-    pokemon.trainer = this;
+    pokemon.setTrainer(this);
     return this;
   }
 }

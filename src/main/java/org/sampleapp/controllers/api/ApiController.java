@@ -1,13 +1,13 @@
-package org.zeroturnaround.controllers.api;
+package org.sampleapp.controllers.api;
 
+import org.sampleapp.model.Trainer;
+import org.sampleapp.model.repositories.PokemonRepository;
+import org.sampleapp.model.repositories.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.zeroturnaround.model.Pokemon;
-import org.zeroturnaround.model.Trainer;
-import org.zeroturnaround.model.repositories.PokemonRepository;
-import org.zeroturnaround.model.repositories.TrainerRepository;
+import org.sampleapp.model.Pokemon;
 
 /**
  * Created by shelajev on 22/07/16.
