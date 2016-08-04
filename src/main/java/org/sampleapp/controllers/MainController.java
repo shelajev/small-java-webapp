@@ -1,5 +1,6 @@
 package org.sampleapp.controllers;
 
+import org.sampleapp.SmallJavaWebappApplication;
 import org.sampleapp.model.Trainer;
 import org.sampleapp.model.repositories.PokemonRepository;
 import org.sampleapp.model.repositories.TrainerRepository;
@@ -7,15 +8,11 @@ import org.sampleapp.util.Git;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.sampleapp.SmallJavaWebappApplication;
-import org.sampleapp.model.Pokemon;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Created by shelajev on 24/07/16.
@@ -38,13 +35,15 @@ public class MainController {
   @RequestMapping("/challenge")
   public String challenge(Model model) {
     log.info("Loading all the trainers and their pokemon (even if they don't have any)");
-    Iterable<Pokemon> pokemons = pokemonRepository.findAll();
-    List<Trainer> trainers = StreamSupport
-      .stream(pokemons.spliterator(), false)
-      .map(p -> p.getTrainer())
-      .collect(Collectors.toList());
+//    Iterable<Pokemon> pokemons = pokemonRepository.findAll();
+//    List<Trainer> trainers = StreamSupport
+//      .stream(pokemons.spliterator(), false)
+//      .map(p -> p.getTrainer())
+//      .collect(Collectors.toList());
+    PageRequest pageRequest = new PageRequest(0, 20);
+    Page<Trainer> top10 = trainerRepository.findAll(pageRequest);
 
-    model.addAttribute("trainers", trainers);
+    model.addAttribute("trainers", top10);
     return "challenge";
   }
 
