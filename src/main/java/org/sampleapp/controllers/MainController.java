@@ -37,7 +37,7 @@ public class MainController {
 
   @RequestMapping("/challenge")
   public String challenge(Model model) {
-    log.info("Rendering the challenge");
+    log.info("Loading all the trainers and their pokemon (even if they don't have any)");
     Iterable<Pokemon> pokemons = pokemonRepository.findAll();
     List<Trainer> trainers = StreamSupport
       .stream(pokemons.spliterator(), false)

@@ -30,11 +30,27 @@
 
 <div class="container">
     <div class="starter-template">
-
         <div class="row">
             <div class="col-md-3"></div>
-
-            <div class="col-md-6" id="image1">
+            <div class="col-md-6" id="model-image">
+                <a href="#" class="thumbnail">
+                    <img src="/images/model-image.png" width="640" align="center"></img>
+                </a>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" id="application-view-image">
+                <a href="#" class="thumbnail">
+                    <img src="/images/application-view-image.png" width="640" align="center"></img>
+                </a>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" id="xrebel-image">
                 <a href="#" class="thumbnail">
                     <img src="/images/xrebel.png" width="640" align="center"></img>
                 </a>
@@ -43,7 +59,7 @@
         </div>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6" id="image2">
+            <div class="col-md-6" id="ide-image">
                 <a href="#" class="thumbnail">
                     <img src="/images/ide.png" width="640" align="center"></img>
                 </a>
@@ -64,13 +80,25 @@
     var tour = new Tour({
         steps: [
             {
-                element: "#image1",
+                element: "#model-image",
+                title: "Game of Thrones characters own Pokemon",
+                content: "The data model is the following: game of throne characters can have multiple pokemon. Every pokemon belongs to a pokemon species. ",
+                placement: "left"
+            },
+            {
+                element: "#application-view-image",
+                title: "This is how the app looks like",
+                content: "It's a table of the data, fetched from the database and rendered in the view. Super simple",
+                placement: "right"
+            },
+            {
+                element: "#xrebel-image",
                 title: "Look at the application with XRebel",
                 content: "XRebel helps you identify the excessive database use",
                 placement: "right"
             },
             {
-                element: "#image2",
+                element: "#ide-image",
                 title: "Get to the IDE",
                 content: "Get to the IDE, fix the issue, let JRebel reload the code instantly",
                 placement: "right"
