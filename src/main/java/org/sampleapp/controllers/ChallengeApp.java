@@ -32,7 +32,7 @@ public class ChallengeApp {
 
     // oh, look here's a useless code that just does some database queries.
     // I wonder what will happen if you delete it?? ;-)
-//    pokemonRepository.findAll();
+    pokemonRepository.findAll();
 
     return top10;
   }
