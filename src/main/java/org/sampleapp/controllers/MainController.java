@@ -42,6 +42,9 @@ public class MainController {
   private void pause() {
     try {
       Thread.sleep(1000);
+      for(int i = 0; i < 100; i++) {
+    	  System.out.println("hello cruel world!");
+      }
     }
     catch (InterruptedException e) {
       e.printStackTrace();

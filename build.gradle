@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.4.0-RC1'
+		springBootVersion = '1.4.0.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -24,7 +24,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+	jcenter()
+  mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
 }
