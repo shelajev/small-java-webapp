@@ -77,7 +77,8 @@
 </div>
 
 <script>
-    var tour = new Tour({
+    tour = new Tour({
+        storage: false,
         steps: [
             {
                 element: "#model-image",
@@ -116,10 +117,7 @@
 
     // Initialize the tour
     tour.init();
-    tour.goTo();
-
-    // Start the tour
-    tour.start(true);
+    tour.restart();
 </script>
 </body>
 </html>
