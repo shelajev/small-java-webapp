@@ -18,22 +18,37 @@ import java.util.stream.StreamSupport;
 @Component
 public class ChallengeApp {
 
-  @Autowired TrainerRepository trainerRepository;
+	@Autowired
+	TrainerRepository trainerRepository;
 
-  @Autowired PokemonRepository pokemonRepository;
+	@Autowired
+	PokemonRepository pokemonRepository;
 
-  public Page<Trainer> getTopTrainers() {
-    PageRequest pageRequest = new PageRequest(0, 10);
-    Page<Trainer> top10 = trainerRepository.findAll(pageRequest);
+	public Page<Trainer> getTopTrainers() {
+		// oh, look here's a useless code that just does some database queries.
+		// I wonder what will happen if you delete it?? ;-)
+		pokemonRepository.findAll();
+		
+		PageRequest pageRequest = new PageRequest(0, 10);
+		Page<Trainer> top10 = trainerRepository.findAll(pageRequest);
 
-    Stream<Pokemon> strongPokemon = StreamSupport.stream(top10.spliterator(), false)
-      .flatMap(t -> t.pokemons.stream())
-      .filter(p -> p.CP > 100);
+		Stream<Pokemon> strongPokemon = StreamSupport.stream(top10.spliterator(), false)
+				.flatMap(t -> t.pokemons.stream()).filter(p -> p.CP > 100);
 
-    // oh, look here's a useless code that just does some database queries.
-    // I wonder what will happen if you delete it?? ;-)
-    pokemonRepository.findAll();
-
-    return top10;
-  }
+		pause();
+		
+		return top10;
+	}
+	
+	private void pause() {
+	    try {
+	      Thread.sleep(1000);
+	      for(int i = 0; i < 100; i++) {
+	    	  System.out.println("hello cruel world!");
+	      }
+	    }
+	    catch (InterruptedException e) {
+	      e.printStackTrace();
+	    }
+	  }
 }

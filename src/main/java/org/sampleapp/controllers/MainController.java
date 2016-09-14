@@ -31,25 +31,13 @@ public class MainController {
   public String challenge(Model model) {
     log.info("Loading some of the trainers and their pokemon (even if they don't have any)");
 
-    pause();
-
     Page<Trainer> top10 = challengeApp.getTopTrainers();
 
     model.addAttribute("trainers", top10);
     return "challenge";
   }
 
-  private void pause() {
-    try {
-      Thread.sleep(1000);
-      for(int i = 0; i < 100; i++) {
-    	  System.out.println("hello cruel world!");
-      }
-    }
-    catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
+  
 
   @RequestMapping("/revert")
   public String revert() {
