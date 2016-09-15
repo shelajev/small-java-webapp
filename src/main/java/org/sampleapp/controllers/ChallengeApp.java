@@ -42,9 +42,9 @@ public class ChallengeApp {
 	
 	private void pause() {
 	    try {
-	      Thread.sleep(1000);
+	      
 	      for(int i = 0; i < 100; i++) {
-	    	  System.out.println("hello cruel world!");
+	    	  Thread.sleep(3);
 	      }
 	    }
 	    catch (InterruptedException e) {
